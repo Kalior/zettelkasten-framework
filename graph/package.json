@@ -38,7 +38,9 @@
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
     "gatsby-plugin-typescript": "^2.3.1",
-    "prettier": "^1.19.1"
+    "husky": ">=4",
+    "lint-staged": ">=10",
+    "prettier": "^2.0.5"
   },
   "repository": {
     "type": "git",
@@ -46,5 +48,13 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,json,md}": "prettier --write"
   }
 }
