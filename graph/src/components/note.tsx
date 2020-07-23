@@ -3,9 +3,12 @@ import { Link } from "gatsby"
 import styled from "@emotion/styled"
 import { Helmet } from "react-helmet"
 
+import { CopyToClipboard } from "react-copy-to-clipboard"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCopy } from "@fortawesome/free-solid-svg-icons"
 import { PostNode } from "../types"
 import { CategoryList } from "../components/categoryList"
-import { InvertedShadow, Shadow } from "./neumorphism"
+import { Shadow } from "./neumorphism"
 
 interface NoteProps {
   note: PostNode
@@ -50,7 +53,7 @@ const Grid = styled.div`
 
 export const MainNote = ({ note, externalLinks }) => (
   <>
-    <NoteContainer note={note} />
+    <NoteContainer note={note} isMain={true} />
     {externalLinks.length != 0 && <h2>Sources</h2>}
     <ul>
       {externalLinks.map(link => (
@@ -86,33 +89,64 @@ const ExternalLink = styled.a`
 
 interface NoteContainerProps {
   note: PostNode
+  isMain?: boolean
 }
 
 export const NoteContainerWithShadow: React.FC<NoteContainerProps> = ({
   note,
+  isMain = false,
 }) => (
   <div>
     <Shadow style={{ padding: "2em" }}>
-      <NoteContainer note={note} />
+      <NoteContainer note={note} isMain={isMain} />
     </Shadow>
   </div>
 )
 
-export const NoteContainer: React.FC<NoteContainerProps> = ({ note }) => (
+export const NoteContainer: React.FC<NoteContainerProps> = ({
+  note,
+  isMain = false,
+}) => (
   <NoteDiv>
+    <Helmet>
+      <script
+        src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"
+        async
+      />
+    </Helmet>
     <CategoryList categories={note.frontmatter.categories} />
-    <LinkCard to={note.fields.slug}>
-      <Helmet>
-        <script
-          src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"
-          async
-        ></script>
-      </Helmet>
-      <h2>{note.frontmatter.title}</h2>
-      <div dangerouslySetInnerHTML={{ __html: note.html }} />
-    </LinkCard>
+    {isMain ? (
+      <div>
+        <h2>{note.frontmatter.title}</h2>
+        <CopyToClipboard text={note.frontmatter.uid}>
+          <Copy>
+            <span>{note.frontmatter.uid}</span>
+            <FontAwesomeIcon icon={faCopy} />
+          </Copy>
+        </CopyToClipboard>
+        <div dangerouslySetInnerHTML={{ __html: note.html }} />
+      </div>
+    ) : (
+      <LinkCard to={note.fields.slug}>
+        <h2>{note.frontmatter.title}</h2>
+        <div dangerouslySetInnerHTML={{ __html: note.html }} />
+      </LinkCard>
+    )}
   </NoteDiv>
 )
+
+const Copy = styled.div`
+  color: #999;
+  cursor: pointer;
+  font-size: 0.8rem;
+  margin: -0.8em 0 3em 0;
+  span {
+    margin-right: 0.5em;
+  }
+  :hover {
+    color: #111;
+  }
+`
 
 const NoteDiv = styled.div`
   max-width: 30em;

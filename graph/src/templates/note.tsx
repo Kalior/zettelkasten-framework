@@ -2,6 +2,7 @@ import React from "react"
 import { graphql, navigate } from "gatsby"
 import styled from "@emotion/styled"
 
+
 import { PostNode } from "../types"
 import { GraphContainer } from "../components/graphContainer"
 import { Layout } from "../components/layout"
@@ -60,6 +61,7 @@ export default ({ data }) => {
     </Layout>
   )
 }
+
 
 const Grid = styled.div`
   display: grid;
