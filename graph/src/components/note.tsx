@@ -10,6 +10,8 @@ import { PostNode } from "../types"
 import { CategoryList } from "../components/categoryList"
 import { Shadow } from "./neumorphism"
 
+require(`katex/dist/katex.min.css`)
+
 interface NoteProps {
   note: PostNode
   allNotes: PostNode[]
@@ -54,7 +56,7 @@ const Grid = styled.div`
 export const MainNote = ({ note, externalLinks }) => (
   <>
     <NoteContainer note={note} isMain={true} />
-    {externalLinks.length != 0 && <h2>Sources</h2>}
+    {externalLinks.length != 0 && <h3>Sources</h3>}
     <ul>
       {externalLinks.map(link => (
         <li key={link}>
@@ -108,12 +110,6 @@ export const NoteContainer: React.FC<NoteContainerProps> = ({
   isMain = false,
 }) => (
   <NoteDiv>
-    <Helmet>
-      <script
-        src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"
-        async
-      />
-    </Helmet>
     <CategoryList categories={note.frontmatter.categories} />
     {isMain ? (
       <div>

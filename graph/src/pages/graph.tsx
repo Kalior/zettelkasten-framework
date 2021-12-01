@@ -28,7 +28,7 @@ export default ({ data }) => {
         <GraphContainer
           allNotes={allNotes}
           onClickNode={onClickNode}
-          width={1200}
+          width={1800}
         />
       </InvertedShadow>
       <Note note={note} allNotes={allNotes} />

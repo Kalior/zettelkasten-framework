@@ -16,6 +16,7 @@ interface GraphData {
 
 interface GraphContainerProps {
   allNotes: PostNode[]
+  oneAwayLinks?: string[]
   onClickNode: CallableFunction
   highlightNode?: PostNode
   width?: number
@@ -34,7 +35,7 @@ export const GraphContainer: React.FC<GraphContainerProps> = ({
     title: node.frontmatter.title,
     color:
       node.frontmatter.uid == highlightNode.frontmatter.uid
-        ? "#fb9a99"
+        ? "#c40b08"
         : "#2e414f",
   }))
 
@@ -46,7 +47,7 @@ export const GraphContainer: React.FC<GraphContainerProps> = ({
           id: link,
           title: " ",
           symbolType: link.slice(0, 4) == "http" ? "square" : "circle",
-          color: link.slice(0, 4) == "http" ? "#b2df8a" : "#a6cee3",
+          color: link.slice(0, 4) == "http" ? "#62a02c" : "#31769b",
         }))
     )
   )
