@@ -5,6 +5,7 @@
  */
 
 module.exports = {
+  pathPrefix: `/zettelkasten`,
   /* Your site config here */
   plugins: [
     "gatsby-plugin-typescript",
