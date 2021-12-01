@@ -8,6 +8,8 @@ import { Layout } from "../components/layout"
 import { InvertedShadow } from "../components/neumorphism"
 import { LinkedNotes, MainNote } from "../components/note"
 
+import "katex/dist/katex.min.css"
+
 export default ({ data }) => {
   const note: PostNode = data.markdownRemark
   const allNotes: PostNode[] = data.allMarkdownRemark.edges.map(

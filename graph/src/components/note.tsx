@@ -10,7 +10,7 @@ import { PostNode } from "../types"
 import { CategoryList } from "../components/categoryList"
 import { Shadow } from "./neumorphism"
 
-require(`katex/dist/katex.min.css`)
+import "katex/dist/katex.min.css"
 
 interface NoteProps {
   note: PostNode
