@@ -7,6 +7,8 @@ import { GraphContainer } from "../components/graphContainer"
 import { Layout } from "../components/layout"
 import { InvertedShadow } from "../components/neumorphism"
 
+import "katex/dist/katex.min.css"
+
 export default ({ data }) => {
   const allNotes: PostNode[] = data.allMarkdownRemark.edges.map(
     ({ node }) => node

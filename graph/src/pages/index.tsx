@@ -5,6 +5,8 @@ import { Layout } from "../components/layout"
 
 import { NoteField } from "../components/noteField"
 
+import "katex/dist/katex.min.css"
+
 export default ({ data }) => {
   return (
     <Layout>
