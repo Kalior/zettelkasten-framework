@@ -28,7 +28,7 @@
     "gatsby-plugin-emotion": "^7.3.0",
     "gatsby-remark-katex": "^6.3.0",
     "gatsby-source-filesystem": "^4.3.0",
-    "gatsby-transformer-remark": "^5.3.0",
+    "gatsby-transformer-remark": "^5.25.1",
     "katex": "^0.15.1",
     "react": "^17.0.2",
     "react-copy-to-clipboard": "^5.0.2",
