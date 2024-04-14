@@ -1,0 +1,21 @@
+.title {
+    margin: 1rem;
+    font-weight: 500;
+    font-size: 1.2em;
+    display: inline-block;
+    border-bottom: 1px solid;
+}
+
+
+.header {
+  padding: 1rem;
+}
+
+.styled-link {
+    color: inherit;
+    text-decoration: none;
+    :hover {
+        text-decoration: underline;
+    }
+    margin: 1rem
+}

@@ -1,0 +1,19 @@
+.listItem {
+    display: inline-block;
+    &::after {
+        content: "•";
+        margin: 0 5px;
+    }
+
+    &:last-child {
+        &::after {
+            content: "";
+        }
+    }
+}
+.listContainer {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #999;
+}
