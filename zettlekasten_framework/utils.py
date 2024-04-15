@@ -66,21 +66,3 @@ def read_path_to_note(path: Path) -> Note:
         header=header, uid=uid, date=date, categories=categories, content=main_content, links=links
     )
 
-
-def path_to_markdown_extract(p: Path) -> html.Div:
-    note = read_path_to_note(p)
-
-    category_list = [
-        html.Ul([html.Li(c, className='listItem') for c in note.categories], className='listContainer')
-    ]
-
-    return html.Div([
-        html.Div(category_list),
-        html.Div(
-            html.H3([note.header, html.Span(f"- {note.date}", style={"color": "#bbb"})],
-                    style={"marginBottom": "1em"})),
-        html.Div(note.excerpt),
-    ],
-        className='shadow',
-        style={"padding": "1em 2em", "margin": "2em 1em"}
-    )
