@@ -17,3 +17,34 @@
     margin: 0;
     color: #999;
 }
+.copy {
+    color: #999;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin: -0.8em 0 3em 0;
+    span {
+        margin-right: 0.5em;
+    }
+    :hover {
+        color: #111;
+    }
+}
+
+.linkCard {
+    display: block;
+
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+
+    :hover {
+        text-decoration: underline;
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 1rem;
+}

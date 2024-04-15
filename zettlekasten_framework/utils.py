@@ -16,7 +16,7 @@ class Note:
 
     @property
     def excerpt(self) -> str:
-        return textwrap.shorten(self.content,  width=70, placeholder="...")
+        return textwrap.shorten(self.content, width=70, placeholder="...")
 
 
 def get_markdown_pages():
@@ -65,4 +65,3 @@ def read_path_to_note(path: Path) -> Note:
     return Note(
         header=header, uid=uid, date=date, categories=categories, content=main_content, links=links
     )
-
