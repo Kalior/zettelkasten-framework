@@ -20,11 +20,10 @@ def note_to_category_card(note: utils.Note) -> html.Div:
                         ],
                     )
                 ],
-                href=f"/note/{note.uid}", className='styled-link'),
+                href=f"/note/{note.uid}", className='styled-link', style={"margin": "0"}),
         ],
         style={"padding": "2em", "fontSize": "0.8em", "alignSelf": "start"}, className='shadow'
     )
-
 
 def layout(category_id=None, **kwargs):
     print(kwargs)
