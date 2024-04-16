@@ -21,7 +21,7 @@ def layout(**kwargs):
     return html.Div(
         [
             html.Div(
-                note_to_graph(notes, None, "90vw", "90vh"),
+                note_to_graph(notes, None, "90vw", "100%"),
                 className='inverted-shadow'
             ),
         ], className='grid', style={"gridGap": "2rem"}

@@ -74,7 +74,7 @@ def layout(note_id=None, **kwargs):
             html.Div(note_to_element(note),
                      style={'marginBottom': "2rem", "gridArea": "1 / 1 / 2 / 3", "fontSize": "1.2em"}),
             html.Div(
-                note_to_graph(notes, note),
+                note_to_graph(notes, note, width="100%", height="100%"),
                 style={"gridArea": "1 / 3 / 2 / 5"},
                 className='inverted-shadow'
             ),

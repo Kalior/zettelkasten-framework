@@ -6,7 +6,8 @@ from dash import html, dcc
 from zettlekasten_framework import utils
 
 
-def note_to_graph(notes: list[utils.Note], note: utils.Note | None = None, width: str="30rem", height: str = "30rem") -> html.Div:
+def note_to_graph(notes: list[utils.Note], note: utils.Note | None = None, width: str = "30rem",
+                  height: str = "30rem") -> html.Div:
     if note is None:
         note = utils.Note(None, None, None, [], None, [])
 
@@ -43,6 +44,17 @@ def note_to_graph(notes: list[utils.Note], note: utils.Note | None = None, width
 
     node_trace.marker.color = ["#aac4e2" if n.uid == note.uid else "#333" for n in notes]
     node_trace.text = [n.header for n in notes]
+
+    if note.header is not None:
+        x_range = np.max(node_x) - np.min(node_x)
+        y_range = np.max(node_y) - np.min(node_y)
+        note_x, note_y = pos[note.uid]
+        xlim = [note_x - x_range / 5, note_x + x_range / 5]
+        ylim = [note_y - y_range / 5, note_y + y_range / 5]
+    else:
+        xlim = None
+        ylim = None
+
     fig = go.Figure(data=[edge_trace, node_trace],
                     layout=go.Layout(
                         showlegend=False,
@@ -50,8 +62,8 @@ def note_to_graph(notes: list[utils.Note], note: utils.Note | None = None, width
                         margin=dict(b=5, l=5, r=5, t=5),
                         plot_bgcolor='rgba(0,0,0,0)',
                         paper_bgcolor='rgba(0,0,0,0)',
-                        xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-                        yaxis=dict(showgrid=False, zeroline=False, showticklabels=False))
+                        xaxis=dict(showgrid=False, zeroline=False, showticklabels=False, range=xlim),
+                        yaxis=dict(showgrid=False, zeroline=False, showticklabels=False, range=ylim))
                     )
 
     graph = dcc.Graph(figure=fig, id='graph', config={
