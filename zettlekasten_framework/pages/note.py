@@ -28,7 +28,7 @@ def note_to_element(note: utils.Note, is_main: bool = True, external_links: list
                 [
                     html.H2(note.header),
                     html.Div(note.uid, className='copy'),
-                    dcc.Markdown(note.content)
+                    dcc.Markdown(note.content, mathjax=True)
                 ],
             ),
             external_links_element
@@ -47,7 +47,7 @@ def note_to_linked_card(note: utils.Note) -> html.Div:
                     html.Div(
                         [
                             html.H2(note.header),
-                            dcc.Markdown(note.content)
+                            dcc.Markdown(note.content, mathjax=True)
                         ],
                     )
                 ],

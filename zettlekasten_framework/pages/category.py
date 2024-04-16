@@ -16,7 +16,7 @@ def note_to_category_card(note: utils.Note) -> html.Div:
                     html.Div(
                         [
                             html.H2(note.header),
-                            dcc.Markdown(note.content)
+                            dcc.Markdown(note.content, mathjax=True)
                         ],
                     )
                 ],
@@ -24,6 +24,7 @@ def note_to_category_card(note: utils.Note) -> html.Div:
         ],
         style={"padding": "2em", "fontSize": "0.8em", "alignSelf": "start"}, className='shadow'
     )
+
 
 def layout(category_id=None, **kwargs):
     print(kwargs)
