@@ -1,6 +1,6 @@
 import dataclasses
-from pathlib import Path
 import textwrap
+from pathlib import Path
 
 from dash import dcc, html
 
@@ -54,10 +54,10 @@ def read_path_to_note(path: Path) -> Note:
 
     categories = [c.replace("#", "") for c in lines[1].replace("\n", "").split(" ") if c != ""]
 
-    main_content = "\n".join([line.replace("\n", "") for line in lines if line[0] not in ['#', '-']])
+    main_content = "\n".join([line.replace("\n", "") for line in lines if line[0] not in ["#", "-"]])
     links = [line.replace("[[", "").replace("]]", "").replace("- ", "").replace("\n", "") for line in lines if
-             line[0] == '-']
-    links = list(set(fix_link(link).strip() for link in links))
+             line[0] == "-"]
+    links = list({fix_link(link).strip() for link in links})
 
     date = title.split(" ")[0]
 
@@ -68,6 +68,7 @@ def read_path_to_note(path: Path) -> Note:
 
 def get_category_list(note: Note) -> list[html.Ul]:
     return [
-        html.Ul([html.Li(dcc.Link(c, href=f"/category/{c}", className='styled-link', style={"margin": "0"}), className='listItem') for c in
-                 note.categories], className='listContainer')
+        html.Ul([html.Li(dcc.Link(c, href=f"/category/{c}", className="styled-link", style={"margin": "0"}),
+                         className="listItem") for c in
+                 note.categories], className="listContainer")
     ]

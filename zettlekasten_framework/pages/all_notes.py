@@ -1,7 +1,7 @@
 from pathlib import Path
 
 import dash
-from dash import Dash, html, dcc
+from dash import dcc, html
 
 from zettlekasten_framework.utils import get_markdown_pages, read_path_to_note
 
@@ -12,7 +12,7 @@ def path_to_markdown_extract(p: Path) -> html.Div:
     note = read_path_to_note(p)
 
     category_list = [
-        html.Ul([html.Li(c, className='listItem') for c in note.categories], className='listContainer')
+        html.Ul([html.Li(c, className="listItem") for c in note.categories], className="listContainer")
     ]
 
     return html.Div([
@@ -25,7 +25,7 @@ def path_to_markdown_extract(p: Path) -> html.Div:
 
         html.Div(note.excerpt),
     ],
-        className='shadow',
+        className="shadow",
         style={"padding": "1em 2em", "margin": "2em 1em"}
     )
 
