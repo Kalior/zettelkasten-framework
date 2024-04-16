@@ -9,10 +9,8 @@ dash.register_page(__name__)
 
 @callback(Output('click-dummy-output', 'children'), Input('graph', 'clickData'))
 def clickdata(click_data, *args, **kwargs):
-    print(click_data)
     if click_data is None:
         return None
-    # print(kwargs)
     clicked_uid = click_data['points'][0]['customdata']
     return dcc.Location(pathname=f"/note/{clicked_uid}", id=f"/note/{clicked_uid}")
 

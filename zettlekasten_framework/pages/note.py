@@ -8,13 +8,9 @@ dash.register_page(__name__, path_template="/note/<note_id>")
 
 
 def note_to_element(note: utils.Note, is_main: bool = True) -> html.Div:
-    category_list = [
-        html.Ul([html.Li(c, className='listItem') for c in note.categories], className='listContainer')
-    ]
-
     return html.Div(
         [
-            html.Div(category_list),
+            html.Div(utils.get_category_list(note)),
             html.Div(
                 [
                     html.H2(note.header),
@@ -28,21 +24,22 @@ def note_to_element(note: utils.Note, is_main: bool = True) -> html.Div:
 
 
 def note_to_linked_card(note: utils.Note) -> html.Div:
-    category_list = [
-        html.Ul([html.Li(c, className='listItem') for c in note.categories], className='listContainer')
-    ]
     return html.Div(
-        dcc.Link(
-            [
-                html.Div(category_list),
-                html.Div(
-                    [
-                        html.H2(note.header),
-                        dcc.Markdown(note.content)
-                    ],
-                )
-            ],
-            href=f"/note/{note.uid}", className='styled-link'),
+        [
+            html.Div(utils.get_category_list(note)),
+
+            dcc.Link(
+                [
+
+                    html.Div(
+                        [
+                            html.H2(note.header),
+                            dcc.Markdown(note.content)
+                        ],
+                    )
+                ],
+                href=f"/note/{note.uid}", className='styled-link'),
+        ],
         style={"padding": "2em", "fontSize": "0.8em", "alignSelf": "start"}, className='shadow'
     )
 

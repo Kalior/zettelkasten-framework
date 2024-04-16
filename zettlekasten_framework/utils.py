@@ -64,3 +64,10 @@ def read_path_to_note(path: Path) -> Note:
     return Note(
         header=header, uid=uid, date=date, categories=categories, content=main_content, links=links
     )
+
+
+def get_category_list(note: Note) -> list[html.Ul]:
+    return [
+        html.Ul([html.Li(dcc.Link(c, href=f"/category/{c}", className='styled-link', style={"margin": "0"}), className='listItem') for c in
+                 note.categories], className='listContainer')
+    ]
