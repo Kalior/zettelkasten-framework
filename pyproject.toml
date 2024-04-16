@@ -38,6 +38,9 @@ Documentation = "https://github.com/kalior/zettlekasten-framework#readme"
 Issues = "https://github.com/kalior/zettlekasten-framework/issues"
 Source = "https://github.com/kalior/zettlekasten-framework"
 
+[project.scripts]
+zettlekasten = "zettlekasten_framework.zettlekasten:main"
+
 [tool.hatch.version]
 path = "zettlekasten_framework/__about__.py"
 
