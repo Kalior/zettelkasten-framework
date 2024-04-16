@@ -24,7 +24,7 @@ def note_to_graph(notes: list[utils.Note], note: utils.Note | None = None, width
 
     edge_trace = go.Scatter(
         x=edge_x, y=edge_y,
-        line={"width": 0.5, " color": "#888"},
+        line={"width": 0.5, "color": "#888"},
         hoverinfo="none",
         mode="lines")
 

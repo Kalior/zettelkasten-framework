@@ -16,7 +16,7 @@ def note_to_element(note: utils.Note, external_links=None) -> html.Div:
             [
                 html.H3("Links"),
                 html.Ul([
-                    html.Li(link) for link in external_links
+                    html.Li(html.A(link, href=link, className='styled-link')) for link in external_links
                 ])
             ],
             style={"gridArea": "2 / 1 / "}
