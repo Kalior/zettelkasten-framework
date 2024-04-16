@@ -25,7 +25,7 @@
     span {
         margin-right: 0.5em;
     }
-    :hover {
+    &:hover {
         color: #111;
     }
 }
@@ -37,7 +37,7 @@
     text-decoration: none;
     color: inherit;
 
-    :hover {
+    &:hover {
         text-decoration: underline;
     }
 }

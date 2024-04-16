@@ -9,8 +9,9 @@ if __name__ == '__main__':
         children=[
             html.H1('Zettlekasten', className="title"),
             html.Div([
-                dcc.Link(f"{page['name']}", href=page["relative_path"], className="styled-link")
-                for page in dash.page_registry.values()]
+                dcc.Link(f"All notes", href="/all-notes", className="styled-link"),
+                dcc.Link(f"Full graph", href="/graph", className="styled-link")
+            ], style={"display": "inline-block"}
             ),
             html.Div(className='content', children=dash.page_container),
             html.Div(id='click-dummy-output', style={"display": "none"})
