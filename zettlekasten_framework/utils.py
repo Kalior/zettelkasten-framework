@@ -49,7 +49,6 @@ def read_path_to_note(path: Path) -> Note:
         lines = list(f.readlines())
 
     title = lines[0].replace("# ", "").replace("\n", "")
-    print(title)
     header = title.split(" ")[1].replace("-", " ")
     uid = title.replace(" ", "-")
 
