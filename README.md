@@ -12,15 +12,21 @@ I have three scripts to ease the use of the Zettelkasten:
 * `tag-search.sh` takes the name of a tag and outputs all notes with that tag.
 
 ## Visualisation
-Graph visualisation of the zettelkasten is implemented via [gatsby](https://www.gatsbyjs.org).  Is a two-step solution.  First, run `python convert.py`, then move to the `graph` directory and run:
+Graph visualisation of the zettelkasten is implemented via [plotly dash]https://plotly.com/dash/). Install the framework via (in a virtual environment)
 
 ```sh
-sudo npm install -g gatsby-cli
-yarn
-gatsby develop
+pip install .
 ```
 
-And then you can view the zettelkasten in your browser on [localhost:8000](http://localhost:8000).
+And then run:
+
+```sh
+zettlekasten
+```
+
+in a directory containing markdown notes following the style created by `make-note.sh`.
+
+You can view the zettelkasten in your browser on [localhost:8050/all-notes](http://localhost:8050/all-notes).
 
 ![example of visualisation](example.png)
 
