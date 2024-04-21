@@ -16,7 +16,7 @@ def note_to_element(note: utils.Note, external_links=None) -> html.Div:
             [
                 html.H3("Links"),
                 html.Ul([
-                    html.Li(html.A(link, href=link, className='styled-link')) for link in external_links
+                    html.Li(html.A(link, href=link, className="styled-link")) for link in external_links
                 ])
             ],
             style={"gridArea": "2 / 1 / "}
@@ -30,7 +30,13 @@ def note_to_element(note: utils.Note, external_links=None) -> html.Div:
             html.Div(
                 [
                     html.H2(note.header),
-                    html.Div(note.uid, className="copy"),
+                    html.Div([
+                        html.Div(note.uid, className="copy-content", id="copy-this"), dcc.Clipboard(
+                            target_id="copy-this",
+                            title="copy",
+                            className="copy",
+                        ),
+                    ]),
                     dcc.Markdown(note.content, mathjax=True)
                 ],
             ),
